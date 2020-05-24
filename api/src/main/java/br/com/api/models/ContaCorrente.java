@@ -41,4 +41,9 @@ public class ContaCorrente {
         return saldo;
     }
 
+    @Override
+    public String toString() {
+        return "{'agencia': " + agencia + ", 'conta': " + conta + ", 'dac': " + dac +", 'saldo': " + saldo + "}";
+    }
+
 }

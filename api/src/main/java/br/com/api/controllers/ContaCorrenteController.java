@@ -1,5 +1,6 @@
 package br.com.api.controllers;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +13,8 @@ import br.com.api.producers.ContaCorrenteProducer;
 @RestController
 @RequestMapping(value = "/conta/corrente")
 public class ContaCorrenteController {
+
+    private String topicName = "contacorrente";
     
     private final ContaCorrenteProducer contaCorrenteProducer;
 
@@ -20,7 +23,13 @@ public class ContaCorrenteController {
     }
 
     @RequestMapping(path = "/cadastrar", method = RequestMethod.POST)
-    public @ResponseBody ContaCorrente register(@RequestBody ContaCorrente conta) {
-        return conta;
+    public @ResponseBody Boolean register(@RequestBody ContaCorrente conta) {
+        try {
+            contaCorrenteProducer.send(topicName + "register", conta);
+
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

@@ -4,15 +4,14 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import br.com.api.models.ContaCorrente;
+
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Value;
 
 @Component
 public class ContaCorrenteProducer {
-    
-    @Value("${topic.name}")
-    private String topicName;
 
     private final KafkaTemplate<String, String> kafkaTemplate;
 
@@ -20,8 +19,9 @@ public class ContaCorrenteProducer {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public void send(@RequestBody String contaCorrente) {
+    public void send(String topic, @RequestBody ContaCorrente contaCorrente) {
         String key = UUID.randomUUID().toString();
-        kafkaTemplate.send(topicName, key, contaCorrente);
+        kafkaTemplate.send(topic, key, contaCorrente.toString());
+        System.out.println(contaCorrente.toString());
     }
 }
