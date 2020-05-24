@@ -1,4 +1,4 @@
-// Gerente é um funcionário. Gerente herda da class Funcionário
+// Design é um funcionário, herda da class Funcionário
 public class Design extends Funcionario {
 	
 	public double getBonificacao() {

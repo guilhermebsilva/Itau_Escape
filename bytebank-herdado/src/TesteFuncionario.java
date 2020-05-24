@@ -3,13 +3,15 @@ public class TesteFuncionario {
 
 	public static void main(String[] args) {
 		
-		Gerente nico = new Gerente();
-		nico.setNome("Nico Steppat");
-		nico.setCpf("222.222.222-22");
-		nico.setSalario(2500.80);
+		Cliente cliente = new Cliente();
 		
-		System.out.println(nico.getNome());
-		System.out.println(nico.getBonificacao());
+		Gerente guilherme = new Gerente();
+		guilherme.setNome("Guilherme B");
+		guilherme.setCpf("222.222.222-22");
+		guilherme.setSalario(2500.00);
+		
+		System.out.println(guilherme.getNome());
+		System.out.println(guilherme.getBonificacao());
 
 	}
 
