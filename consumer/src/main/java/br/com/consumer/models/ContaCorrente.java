@@ -1,4 +1,4 @@
-package br.com.api.models;
+package br.com.consumer.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -10,6 +10,7 @@ public class ContaCorrente {
 
     @Id
     private Integer conta;
+
     private Integer dac;
     private Double saldo = 0.0;
 
@@ -47,9 +48,20 @@ public class ContaCorrente {
         return saldo;
     }
 
-    @Override
-    public String toString() {
-        return agencia + "&" + conta + "&" + dac + "&" + saldo;
+    public void setAgencia (Integer agencia) {
+        this.agencia = agencia;
+    }
+
+    public void setConta (Integer conta) {
+        this.conta = conta;
+    }
+
+    public void setDac (Integer dac) {
+        this.dac = dac;
+    }
+
+    public void setSaldo (Double saldo) {
+        this.saldo = saldo;
     }
 
     public static ContaCorrente stringToObject(String seria) {
