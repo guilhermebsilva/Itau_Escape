@@ -1,8 +1,10 @@
 
 
-//não pode mais instanciar eesa clase, pois é abstrata
+//não pode mais instanciar essa clase, pois é abstrata
 
 public abstract class Funcionario {
+	
+
 	
 	private String nome;
 	private String cpf;
