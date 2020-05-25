@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import br.com.api.models.ContaCorrente;
 
+import java.util.Map;
 import java.util.UUID;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -26,6 +27,12 @@ public class ContaCorrenteProducer {
     public void send(String topic, @RequestBody ContaCorrente contaCorrente) throws JsonProcessingException {
         String key = UUID.randomUUID().toString();
         String serialiaze = objectMapper.writeValueAsString(contaCorrente);
+        kafkaTemplate.send(topic, key, serialiaze);
+    }
+
+    public void send(String topic, Map<String, Number> data) throws JsonProcessingException {
+        String key = UUID.randomUUID().toString();
+        String serialiaze = objectMapper.writeValueAsString(data);
         kafkaTemplate.send(topic, key, serialiaze);
     }
 }

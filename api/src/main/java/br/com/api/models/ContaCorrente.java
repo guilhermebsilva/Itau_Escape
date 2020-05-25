@@ -47,6 +47,14 @@ public class ContaCorrente {
         return saldo;
     }
 
+    public Boolean setSaldo(Double value) {
+        if (saldo + value < 0) {
+            return false;
+        }
+        saldo += value;
+        return true;
+    }
+
     @Override
     public String toString() {
         return agencia + "&" + conta + "&" + dac + "&" + saldo;
