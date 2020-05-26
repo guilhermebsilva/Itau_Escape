@@ -3,6 +3,7 @@ package br.com.api.models;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+// Classe que representa o tabela conta_corrente no banco
 @Entity
 public class ContaCorrente {
     
@@ -15,6 +16,11 @@ public class ContaCorrente {
 
     public ContaCorrente() {
         //
+    }
+
+    public ContaCorrente(Integer conta, Double saldo) {
+        this.conta = conta;
+        this.saldo = saldo;
     }
 
     public ContaCorrente(Integer agencia, Integer conta, Integer dac) {
@@ -57,30 +63,11 @@ public class ContaCorrente {
 
     @Override
     public String toString() {
-        return agencia + "&" + conta + "&" + dac + "&" + saldo;
-    }
-
-    public static ContaCorrente stringToObject(String seria) {
-        String[] attrs = seria.split("&");
-
-        if (attrs.length == 3) {
-            return new ContaCorrente(
-                Integer.parseInt(attrs[0]),
-                Integer.parseInt(attrs[1]),
-                Integer.parseInt(attrs[2])
-            );
-        }
-        return new ContaCorrente(
-            Integer.parseInt(attrs[0]),
-            Integer.parseInt(attrs[1]),
-            Integer.parseInt(attrs[2]),
-            Double.parseDouble(attrs[3])
-        );
-        
-    }
-
-    public String lineSeparation() {
-        return conta + "," + agencia + "," + dac + "," + saldo;
+        return "{" +
+                "\"agencia\": " + agencia +
+                "\"conta\": " + conta +
+                "\"dac\": " + dac +
+                "\"saldo\": " + saldo;
     }
 
 }

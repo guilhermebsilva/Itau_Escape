@@ -1,5 +1,6 @@
 package br.com.api.requests;
 
+// Formata a entrada de dados
 public class DebitoRequest {
     
     private Integer conta;
